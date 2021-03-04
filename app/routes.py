@@ -15,8 +15,8 @@ def before_request():
         db.session.commit()
 
 
-@app.route("/")
-@app.route("/index")
+@app.route("/", methods=["POST", "GET"])
+@app.route("/index", methods=["POST", "GET"])
 @login_required
 def index():
     form = PostForm()
@@ -27,17 +27,8 @@ def index():
         flash('Your post is now live!.')
         return redirect(url_for('index'))
     user = {'username': 'Nasa'}
-    posts = [
-        {
-            'author': {'username': 'Nasa'},
-            'body': 'Hello World!!'
-        },
-        {
-            'author': {'username': 'Bilal'},
-            'body': 'Avengers movie was so cool!!'
-        }
-    ]
-    return render_template('index.html',  title="Home", posts=posts)
+    posts = current_user.followed_posts().all()
+    return render_template('index.html',  title="Home", posts=posts, form=form)
 
 
 @app.route("/login", methods=["GET", "POST"])
