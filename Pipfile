@@ -44,6 +44,7 @@ WTForms = "==2.3.3"
 flask-bootstrap = "*"
 flask-moment = "*"
 flask-babel = "*"
+guess-language-spirit = "*"
 
 [dev-packages]
 
