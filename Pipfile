@@ -45,6 +45,8 @@ flask-bootstrap = "*"
 flask-moment = "*"
 flask-babel = "*"
 guess-language-spirit = "*"
+elasticsearch = "*"
+requests = "*"
 
 [dev-packages]
 
